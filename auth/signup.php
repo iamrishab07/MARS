@@ -1,6 +1,10 @@
 <?php
-
 session_start();
+
+if(isset($_SESSION['username'])){
+  header('Location: ../mail/main.php');
+  exit();
+}
 
 ?>
 
@@ -16,19 +20,28 @@ session_start();
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">((  MARS  ))</a>
+<!-- Header Section -->
+  <nav class="navbar navbar-inverse" style="background-color: black;margin-bottom: 0px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="../index.php">
+          <!-- <span style="color:white;">@mars.com</span> -->
+          <img src="../img/logo.png" width="85%" height="140%" style="margin-left: 27px;">
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="./../about.php">About Us</a></li>
-      <li><a href="#">Sign Up</a></li>
-      <li><a href="login.php">Sign In</a></li>
-    </ul>
-  </div>
-</nav>
-  
+  </nav>
+
+
+<!-- End of Header Section -->
+
+
 
 
 <div class="container" style="width: 340px;">

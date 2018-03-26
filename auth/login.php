@@ -16,7 +16,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="../index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
-          <img src="../img/logo.png" width="10%" height="120%" style="margin-left: 27px;">
+          <img src="../img/logo.png" width="85%" height="140%" style="margin-left: 27px;">
         </a>
       </div>
 
@@ -28,24 +28,42 @@
     </div>
   </nav>
 
-<!-- End of Header Section -->
 
+<!-- End of Header Section -->
 
 <div class="container" style="width: 340px;">
     <br>
 
     <center><h3>Sign in to your Account</h3></center>
     
-    <br><br>
+    <br>
 
-  <form action="./action_login.php">
+    <!-- Displaying the error message -->
+
+    <div class="alert alert-danger">
+    
+      <?php
+
+        if($_SESSION['error_login']){
+          echo $_SESSION['error_login'];
+          unset($$_SESSION['error_login']);
+        }
+
+      ?>
+
+    </div>
+
+    <br>
+
+  <form action="./action_login.php" method="post">
     <div class="form-group">
       <label for="email">Email address:</label>
-      <input type="email" class="form-control" name="email" required="required">
+      <input type="email" class="form-control" name="email" required="required" placeholder="email@mars.com">
     </div>
+
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="pwd"  required="required">
+      <input type="password" class="form-control" name="pwd"  required="required" placeholder="password">
     </div>
     
     <!-- <div class="checkbox">

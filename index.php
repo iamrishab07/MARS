@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Check for already logged in user
+
+if(isset($_SESSION['username'])){
+  header('Location: mail/main.php');
+  exit();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +33,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
-          <img src="img/logo.png" width="10%" height="120%" style="margin-left: 27px;">
+          <img src="img/logo.png" width="85%" height="140%" style="margin-left: 27px;">
         </a>
       </div>
 
