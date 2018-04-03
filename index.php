@@ -31,9 +31,9 @@ if(isset($_SESSION['username'])){
   <nav class="navbar navbar-inverse" style="background-color: black;margin-bottom: 0px;">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/index.php">
+        <a class="navbar-brand" href="/mars/index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
-          <img src="img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
+          <img src="/mars/img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
         </a>
       </div>
 
@@ -46,8 +46,8 @@ if(isset($_SESSION['username'])){
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="auth/signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="auth/login.php" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/mars/auth/signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/mars/auth/login.php" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
 
     </div>
