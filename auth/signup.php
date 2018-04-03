@@ -26,7 +26,7 @@ if(isset($_SESSION['username'])){
       <div class="navbar-header">
         <a class="navbar-brand" href="../index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
-          <img src="../img/logo.png" width="85%" height="140%" style="margin-left: 27px;">
+          <img src="../img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
         </a>
       </div>
 
@@ -42,24 +42,32 @@ if(isset($_SESSION['username'])){
 <!-- End of Header Section -->
 
 
-
-
 <div class="container" style="width: 340px;">
     <br>
 
 <?php
-    
-    if(isset($_SESSION["mail_check"])){
-      unset($_SESSION["mail_check"]);
+     
+    if(isset($_SESSION['mail_check'])){
+        
+    $mail = $_SESSION['mail_check'];
 
-    $mail = $_SESSION["mail_check"];
-
+    // unset($_SESSION['mail_check']);
       echo '
         <center><h3>Register Here</h3></center>
     
-         <br><br>
+         <br>
 
-      <form action="/action_page.php">
+         ';
+         
+         if($_SESSION['error_signup']){
+            echo $_SESSION['error_signup'];
+            unset($_SESSION['error_signup']);
+          }
+
+         echo '
+         <br>
+
+      <form action="phone_verify.php" method="post">
           <div class="form-group">
             <label for="email">MARS Id:</label>
             <input type="email" class="form-control" name="email" value="'. $mail .'@marsmail.com" readonly>
@@ -87,7 +95,7 @@ if(isset($_SESSION['username'])){
             <input type="password" class="form-control" name="cpass"  required="required">
           </div>
 
-          <center><button type="submit" class="btn btn-primary" style="width: 100px;">Login</button></center>
+          <center><button type="submit" class="btn btn-primary" style="width: 100px;">Register</button></center>
 
         </form>
 
@@ -97,14 +105,20 @@ if(isset($_SESSION['username'])){
 
 
     else{
-    
+
+        if($_SESSION['error_mail_check']){
+          echo '<div class="alert alert-danger" style="color:black;">' . $_SESSION['error_mail_check'] . '</div>';
+          unset($_SESSION['error_mail_check']);
+        }
+
     echo '
-      <form action="/mail_check.php">
-        <center><h3>Check For Avaibility :  </h3></center><br><br>
+
+      <form action="mail_check.php" method="post">
+        <center><h3>Type the Id and Check Avaibility :  </h3></center><br><br>
             <div class="form-group">
               <label for="pwd">Enter Your Choice:</label>
               <br><br>
-              <input type="password" class="form-control" name="cpass"  required="required">
+              <input type="text" class="form-control" name="email"  required="required">
             </div>
 
             <center><button type="submit" class="btn btn-primary" style="width: 100px;">Check</button></center>

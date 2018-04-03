@@ -33,7 +33,7 @@ if(isset($_SESSION['username'])){
       <div class="navbar-header">
         <a class="navbar-brand" href="/index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
-          <img src="img/logo.png" width="85%" height="140%" style="margin-left: 27px;">
+          <img src="img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
         </a>
       </div>
 
