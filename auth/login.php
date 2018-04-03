@@ -17,7 +17,7 @@ session_start();
   <nav class="navbar navbar-inverse" style="background-color: black;margin-bottom: 0px;">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="../index.php">
+        <a class="navbar-brand" href="/mars/index.php">
           <!-- <span style="color:white;">@mars.com</span> -->
           <img src="../img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
         </a>
