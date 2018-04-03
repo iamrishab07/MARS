@@ -37,11 +37,22 @@ $sql = "select * from mars_users where email = \"" . $email . "\"";
 
 $result = $conn->query($sql);
 
+if(mysqli_num_rows($result)==0){
+	$_SESSION['error_login'] = "Email id doesn't exist";
+	header('Location: login.php');
+	exit();
+}
+
+
 while($row = mysqli_fetch_assoc($result)){
 	if($row['password']==$pass){
 		$_SESSION['username'] = $email;
 		header('Location: ../mail/main.php');
 		exit();
+	}else{
+		$_SESSION['error_login'] = "Password is not correct";
+	header('Location: login.php');
+	exit();
 	}
 }
 
