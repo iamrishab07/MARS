@@ -8,6 +8,7 @@ if(isset($_SESSION['username'])){
 }
 
 if($_POST['ph_ver']){
+	echo $_SESSION['rand'];
 	if($_POST['ph_ver']==$_SESSION['rand']){
 		unset($_SESSION['rand']); 
 		// connecting to the database andd creating user record
@@ -17,14 +18,15 @@ if($_POST['ph_ver']){
 		$dbname = "mars";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
-		$sql = "insert into mars_users values(\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
+		$sql = "insert into mars_users values(3,\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
 
-		$result = $conn->query($sql);
+		$conn->query($sql) or die(mysql_error());;
 		// Unsetting all the session variables
 		unset($_SESSION['email']);
 		unset($_SESSION['name']);
 		unset($_SESSION['phone']);
 		unset($_SESSION['password']);
+		unset($_SESSION['mail_check']);
 		// forwarding to login page
 		$_SESSION['login_message'] = "You have been registered.Please login to register.";
 		header('Location: login.php');
@@ -38,7 +40,7 @@ if($_POST['ph_ver']){
 	// When browser is hitting page for the first time
 
 	$r = 1000 + rand(1,100);
-
+	echo $r;
 	if($_POST['pass']!=$_POST['cpass']){
 		$_SESSION['error_signup'] = "Password and confirm password should be same.";
 		header('Location: signup.php');
