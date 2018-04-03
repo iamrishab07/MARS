@@ -1,5 +1,6 @@
 <?php
 session_start();
+// $_SESSION['username'] = "hey";
 
 if(!isset($_SESSION['username'])){
 	$_SESSION['login_message'] = "You need to login first.";
@@ -9,10 +10,8 @@ if(!isset($_SESSION['username'])){
 
 if($_POST['mail_body'] && $_POST['mail_to']){
 	// incase someone is sending some mail
+
 }
-
-
-
 
 ?>
 
@@ -47,8 +46,8 @@ if($_POST['mail_body'] && $_POST['mail_to']){
 
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/mars/auth/signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/mars/auth/login.php" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <!-- <li><a href="/mars/auth/signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+        <li><a href="/mars/auth/logout.php" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
 
     </div>
@@ -75,8 +74,8 @@ if($_POST['mail_body'] && $_POST['mail_to']){
 	  	  <input type="subject" name="subject" value="" placeholder="Subject" style="width: 250px;">
 	  	</div>
 	  	<div class="input-group">
-	  	  <label style="margin-right: 12px;">Content</label>
-	  	  <textarea name="content" style="width: 250px;height:120px;" placeholder="Your message here..."></textarea>
+	  	  <label style="margin-right: 12px;">Content</label><br>
+	  	  <textarea name="content" style="width: 250px;height:120px;margin-left: 26%;" placeholder="Your message here..."></textarea>
 	  	  <!-- <input type="content" name="content" value=""> -->
 	  	</div>
 

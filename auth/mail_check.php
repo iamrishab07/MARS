@@ -38,7 +38,7 @@ if ($conn->connect_error) {
 
 // Updating the information in the database
 
-$sql = "select * from mars_users where email = \"" . $email . "\"";
+$sql = "select * from mars_users where email = \"" . $email . "@mars.com\"";
 
 $result = $conn->query($sql);
 

@@ -18,17 +18,17 @@ if($_POST['ph_ver']){
 		$dbname = "mars";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
-		$sql = "insert into mars_users values(3,\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
+		$sql = "insert into mars_users values(5,\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
 
-		$conn->query($sql) or die(mysql_error());;
+		$conn->query($sql) or die(mysql_error());
 		// Unsetting all the session variables
 		unset($_SESSION['email']);
 		unset($_SESSION['name']);
 		unset($_SESSION['phone']);
 		unset($_SESSION['password']);
-		unset($_SESSION['mail_check']);
+		// unset($_SESSION['mail_check']);
 		// forwarding to login page
-		$_SESSION['login_message'] = "You have been registered.Please login to register.";
+		$_SESSION['login_message'] = "You have been registered.Please login to enter.";
 		header('Location: login.php');
 		exit();
 

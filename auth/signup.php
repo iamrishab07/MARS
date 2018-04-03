@@ -6,6 +6,7 @@ if(isset($_SESSION['username'])){
   exit();
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +52,8 @@ if(isset($_SESSION['username'])){
         
     $mail = $_SESSION['mail_check'];
 
-    // unset($_SESSION['mail_check']);
+    unset($_SESSION['mail_check']);
+
       echo '
         <center><h3>Register Here</h3></center>
     
@@ -70,7 +72,7 @@ if(isset($_SESSION['username'])){
       <form action="phone_verify.php" method="post">
           <div class="form-group">
             <label for="email">MARS Id:</label>
-            <input type="email" class="form-control" name="email" value="'. $mail .'@marsmail.com" readonly>
+            <input type="email" class="form-control" name="email" value="'. $mail .'@mars.com" readonly>
           </div>
 
           <div class="form-group">
