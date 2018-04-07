@@ -1,11 +1,15 @@
 <!-- This page is for the inbox implementation part -->
 <?php
 session_start();
-
-//echo 'Signed in as : ' . $_SESSION['username'];
-
+/* Commented for testign purpose only 
+if(!isset($_SESSION['username'])){
+  header('Location: /mars/auth/login.php');
+  exit();
+}
+*/
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -23,6 +27,28 @@ session_start();
 
 </head>
 <body>
+
+
+<!-- Header Secction -->
+  <nav class="navbar navbar-inverse" style="background-color: black;margin-bottom: 0px;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/mars/index.php">
+          <!-- <span style="color:white;">@mars.com</span> -->
+          <img src="/mars/img/logo.png" width="14%" height="140%" style="margin-left: 27px;">
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/mars/auth/signup.php" style="color: white;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/mars/auth/login.php" style="color: white;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+<!-- End of Header Section -->
+
 <br>
 
 <!-- Search Bar via Subject -->
