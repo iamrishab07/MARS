@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Check for already logged in user
@@ -18,10 +19,12 @@ if($_POST['ph_ver']){
 		$dbname = "mars";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
-		$sql = "insert into mars_users values(5,\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
+		$sql = "insert into mars_users (email,fullname,phone,password) values(\"".$_SESSION['email']."\",\"".$_SESSION['name']."\",\"".$_SESSION['phone']."\",\"".$_SESSION['password']."\")";
 
 		$conn->query($sql) or die(mysql_error());
+
 		// Unsetting all the session variables
+		
 		unset($_SESSION['email']);
 		unset($_SESSION['name']);
 		unset($_SESSION['phone']);

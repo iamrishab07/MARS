@@ -98,7 +98,7 @@ if(!isset($_SESSION['username'])){
 				// connecting to the database
 				include '../db.php';
 
-				$sql = "select * from mars_mailbox where rec=\"" . $_SESSION['username'] ."\"";
+				$sql = "select * from mars_mailbox where receiver=\"" . $_SESSION['username'] ."\"";
 
 				$result = $conn->query($sql);
 
@@ -112,6 +112,7 @@ if(!isset($_SESSION['username'])){
 						        <th>Sender</th>
 						        <th>Subject</th>
 						        <th>Body</th>
+						        <th>Timestamp</th>
 						      </tr>
 						    </thead>
 						    <tbody>

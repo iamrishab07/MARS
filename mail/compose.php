@@ -7,9 +7,13 @@ if(!isset($_SESSION['username'])){
 	header('Location: ../auth/login.php');
 	exit();
 }
+include '/db.php';
+
 
 if($_POST['mail_body'] && $_POST['mail_to']){
 	// incase someone is sending some mail
+	$sql = "insert into mars_mailbox values(\""..")";// need to complete this query
+	$result = $conn->query($sql);
 
 }
 
@@ -62,16 +66,26 @@ if($_POST['mail_body'] && $_POST['mail_to']){
 	  </div>
 	
 	<div class="container-fluid" style="margin-top: 2%;margin-left: 38%;">
+	<?php
+	$sub = "";
+	$rec = "";
+	if(isset($_SESSION['mail_subject']) && isset($_SESSION['rec'])){
+		$sub = $_SESSION['mail_subject'];
+		$rec = $_SESSION['rec'];
+		unset($_SESSION['mail_subject']);
+		unset($_SESSION['rec']);
+	}
 
+	?>
 	  <form method="post" action="sent.php">
 	  	<div class="input-group">
 	  	  <label style="margin-right: 12px;">Send to</label>
-	  	  <input type="email" name="email" value="" placeholder="Send to" style="width: 250px;">
+	  	  <input type="email" name="email" value="<?php echo $rec; ?>" placeholder="Send to" style="width: 250px;">
 	  	</div>
 
 	  	<div class="input-group">
 	  	  <label style="margin-right: 12px;">Subject</label>
-	  	  <input type="subject" name="subject" value="" placeholder="Subject" style="width: 250px;">
+	  	  <input type="subject" name="subject" value="<?php echo $sub; ?>" placeholder="Subject" style="width: 250px;">
 	  	</div>
 	  	<div class="input-group">
 	  	  <label style="margin-right: 12px;">Content</label><br>

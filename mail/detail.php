@@ -8,6 +8,13 @@ if(!isset($_SESSION['username'])){
 }
 */
 
+$id = $_GET['x'];
+include '../db.php';
+
+$sql = "";// change this to update statement
+
+$result = $conn->query($sql);
+
 ?>
 
 
@@ -93,49 +100,64 @@ if(!isset($_SESSION['username'])){
 		<!-- Section where mails will be listed using php -->
 			
 		<div class="col-md-8" style="	padding-top: 5px;padding-bottom: 15px;">
-			<center style="font-weight:bold;font-size: 24px;margin-top: 5%;">Your MARS Inbox</center>
+			
 			<?php
 				// connecting to the database
-				include '../db.php';
+				// include '../db.php';
 
-				$sql = "select * from mars_mailbox where sender=\"" . $_SESSION['username'] ."\"";
+				$sql = "select * from mars_mailbox where id=" . $id;
 
 				$result = $conn->query($sql);
 
 		  
 		    	if(mysqli_num_rows($result)==0){
-					echo '<center style="margin-top:10%;">No mails to show</center>';	
+					echo '<center style="margin-top:10%;">No Such Mail Exists.</center>';	
 				}else{
-					echo '<table class="table table-hover">
-						    <thead>
-						      <tr>
-						        <th>Sender</th>
-						        <th>Subject</th>
-						        <th>Body</th>
-						        <th>Status</th>
-						      </tr>
-						    </thead>
-						    <tbody>
-						';
-
+					
 					while($row = mysqli_fetch_assoc($result)){
 
-							
 							$seen_status = "Unseen";
+
+							if($row['sender']==$_SESSION['username']) $_SESSION['rec'] = $row['receiver'];
+							else $_SESSION['rec'] = $row['sender'];
+
+							$_SESSION['mail_subject'] = $row['subject'];
 
 							if($row['rec_end']==1){
 								$seen_status = "Seen";
 							}
 
-							echo '<tr>
-							        <td>'.$row['sender'].'</td>
-							        <td><a href="/mars/mail/detail.php?x='.$row['id'].'" style="text-decoration:none;">'.$row['subject'].'</a></td>
-							        <td>'.$row['body'].'</td>
-							        <td>'.$seen_status.'</td>
-							      </tr>';
-						}
+							echo '
+								<div class="row">
+								<div class="col-md-2">Subject</div>
+								<div class="col-md-8">'.$row['subject'].'</div>
+								<div class="col-md-2">Seen Status : '.$seen_status.'</div>
+								</div>
+								<br>
+								<div class="row">
+								<div class="col-md-2">Sender</div>
+								<div class="col-md-8">'.$row['sender'].'</div>
+								<div class="col-md-2"></div>
+								</div>
+								<br>
+								<div class="row">
+								<div class="col-md-2">Receiver</div>
+								<div class="col-md-8">'.$row['receiver'].'</div>
+								<div class="col-md-2"></div>
+								</div>
+								<br>
+								<div class="row">
+								<div class="col-md-2">Body</div>
+								<div class="col-md-8">'.$row['body'].'</div>
+								<div class="col-md-2"></div>
+								</div>
 
-						echo '</tbody></table>';
+								<form action="/mars/mail/compose.php" method="post">
+								<input type="submit" value="Reply">
+								</form>
+							';
+
+						}
 				}
 
 			    ?>
